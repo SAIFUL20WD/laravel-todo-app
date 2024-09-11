@@ -23,11 +23,14 @@
                             <td>{{$todo->title}}</td>
                             <td>{{$todo->detail}}</td>
                             <td>{{$todo->user}}</td>
-                            <td>{{$todo->is_completed ? "Completed" : "Pending"}}</td>
+                            <td>
+                                {{$todo->is_completed ? "Completed" : "Pending"}}
+                                <input type="checkbox" onclick="location.href='{{route('todo.status', [$todo->id])}}'">
+                            </td>
                             <td>
                                 <div class="btn-group">
-                                    <a class="btn btn-sm bg-warning text-white" href="">Edit</a>
-                                    <a class="btn btn-sm bg-danger text-white" href="">Delete</a>
+                                    <a class="btn btn-sm bg-warning text-white" href="{{route("todo.edit", [$todo->id])}}">Edit</a>
+                                    <a class="btn btn-sm bg-danger text-white" href="{{route("todo.delete", [$todo->id])}}">Delete</a>
                                 </div>
                             </td>
                         </tr>
